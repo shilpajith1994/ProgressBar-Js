@@ -1,13 +1,13 @@
 @charset "utf-8";
 /* ==========================================================================
-   1. CSS Reset Code
-   ========================================================================== */
+1. CSS Reset Code
+========================================================================== */
 
 /* 1.1. Eric Meyers Reset
-   http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-   ========================================================================== */
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+========================================================================== */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
 ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
@@ -70,7 +70,7 @@ sup { top: -.7em; }
 sub { bottom: -.25em; }
 
 /* 1.2. Clear Fix
-   ========================== */
+========================== */
 
 .cf:before,
 .cf:after {
@@ -103,52 +103,97 @@ li {
   width: 86%; 
   margin: 0 auto;
 }
+
+* ,
+*::before ,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 /*=================================
-  Header styling starts here
+main styling starts here
 =================================*/
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden; 
+  text-align: center;   
+}
 
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 99%;
+  width: 350px;
+}
 
+.progress-container::before {
+  content: '';
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); 
+  background-color: lightgrey;
+  z-index: -1;
+}
 
+.progress {
+  width: 0%;
+  height: 4px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  background-color: #2A92DF;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: 0.4s ease;
+}
 
+ul {
+  display: flex;
+  position: absolute;
+  top: -15px;
+}
 
-/*=================================
-  Header styling ends here
-=================================*/  
+.numbers {
+  width: 30px;
+  height: 30px;
+  border: 3px solid lightgray;
+  border-radius: 50%;
+  margin-right: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #999;
+  transition: 0.4s ease;
+}
 
-/*=================================
-  main styling starts here
-=================================*/
+.numbers.active { border-color: #2A92DF; }
 
+.prev ,
+.next {
+  padding: 8px 30px;
+  border: 0;
+  border-radius: 6px;
+  margin: 5px;
+  background-color: #2A92DF;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+}
 
+.prev:active ,
+.next:active { transform: scale(0.98); }
 
-
-
-
-
-
-/*=================================
-  main styling ends here
-=================================*/
-
-/*=================================
-  footer styling starts here
-=================================*/ 
-
-
-
-
-
-
-
- /*=================================
-  footer styling ends here
-=================================*/ 
-
-/*media query starts*/
-/*media query for 995px starts here*/
-@media only screen and (max-width: 995px) {
-
-
-
-}  
+.disabled { background-color: lightgray; }
